@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # save user input values into variables
