@@ -1,0 +1,24 @@
+
+!/bin/bash                    
+                       
+exec < $1
+read header
+
+while IFS="," read -r fname lname email uname pw
+do
+  echo "First name: $fname";
+  echo "Last name: $lname";
+  echo "Email: $email";
+  echo "User name: $uname";
+  echo "Password: $pw;
+
+read -p "enter first name: " $fname;
+read -p "enter last name: " $lname;
+read -p "enter email: " $email;
+read -p "enter user name: " $uname;
+read -p -s "enter password: " $pw;
+
+read fname; echo $fname;
+
+
+
