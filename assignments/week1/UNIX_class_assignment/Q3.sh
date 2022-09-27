@@ -1,7 +1,6 @@
 #!/bin/bash
 
 
-
 read -p "enter number: " n;
 
 for num in {n..0}
