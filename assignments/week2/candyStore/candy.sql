@@ -56,5 +56,31 @@ VALUES
 DROP TABLE IF EXISTS inventory CASCADE;
 DROP TABLE IF EXISTS employees CASCADE;
 
+SELECT e.fullName, i.fullName, favorite_candy
+FROM employees e
+JOIN inventory i ON i.inventory_id =  e.favorite_candy;
+
+SELECT i.fullName, e.fullName
+FROM inventory i 
+LEFT JOIN employees e ON i.inventory_id = e.favorite_candy ;
+
+SELECT quantity * price AS gross_inv_cost
+FROM inventory 
+WHERE fullName = 'M&Ms';
+
+
+SELECT fullName, price 
+FROM inventory 
+WHERE price = (SELECT min(price) FROM inventory);
+
+SELECT *
+FROM inventory 
+ORDER BY  price LIMIT 3;
+
+SELECT avg(price)
+FROM inventory 
+
 SELECT 
+
+
 
