@@ -1,0 +1,109 @@
+DROP TABLE IF EXISTS teachers CASCADE; 
+DROP TABLE IF EXISTS students CASCADE; 
+DROP TABLE IF EXISTS courses CASCADE; 
+DROP TABLE IF EXISTS topics CASCADE; 
+DROP TABLE IF EXISTS courses_students CASCADE;
+DROP TABLE IF EXISTS courses_topics CASCADE; 
+
+
+CREATE TABLE teachers(
+	teacher_id SERIAL PRIMARY KEY,
+	fname varchar(25),
+	lname varchar(25),
+	phone varchar(15),
+	email varchar(255)
+);
+
+CREATE TABLE students(
+	student_id serial PRIMARY KEY,
+	fname varchar(25),
+	lname varchar(25),
+	phone varchar(15),
+	email varchar(255)
+);
+
+CREATE TABLE courses(
+	course_id serial PRIMARY KEY,
+	title varchar(25),
+	course_number varchar(25),
+	teacher_id int REFERENCES teachers UNIQUE 
+);
+
+CREATE TABLE topics(   
+	topic_id serial PRIMARY KEY,
+	some_topic varchar(25)
+);
+
+CREATE TABLE courses_students(
+	student_id int REFERENCES students,
+	course_id int REFERENCES courses
+)
+
+CREATE TABLE courses_topics(
+	course_id int REFERENCES courses,
+	topic_id int REFERENCES topics
+)
+
+insert into students (fname, lname, phone, email) values ('Eziechiele', 'Lovelady', '541-103-6650', 'elovelady0@paginegialle.it');
+insert into students (fname, lname, phone, email) values ('Tiffy', 'Vallentin', '456-249-9750', 'tvallentin1@123-reg.co.uk');
+insert into students (fname, lname, phone, email) values ('Donnajean', 'Ickov', '325-228-3857', 'dickov2@goodreads.com');
+insert into students (fname, lname, phone, email) values ('Dmitri', 'Kobke', '228-822-0764', 'dkobke3@bing.com');
+insert into students (fname, lname, phone, email) values ('Nikkie', 'Harvey', '689-421-8342', 'nharvey4@washington.edu');
+insert into students (fname, lname, phone, email) values ('Nappie', 'Kobke', '911-930-4073', 'nkobke5@dot.gov');
+insert into students (fname, lname, phone, email) values ('Evaleen', 'Restall', '905-769-0962', 'erestall6@ehow.com');
+insert into students (fname, lname, phone, email) values ('Thaxter', 'Ranyelld', '626-334-1714', 'tranyelld7@gravatar.com');
+insert into students (fname, lname, phone, email) values ('Benji', 'Moffet', '601-521-6491', 'bmoffet8@edublogs.org');
+insert into students (fname, lname, phone, email) values ('Herve', 'Simonson', '161-959-4253', 'hsimonson9@issuu.com');
+
+insert into teachers (fname, lname, phone, email) values ('Binni', 'Bearfoot', '728-646-3684', 'bbearfoot0@netvibes.com');
+insert into teachers (fname, lname, phone, email) values ('Saundra', 'Vannozzii', '388-279-2934', 'svannozzii1@behance.net');
+insert into teachers (fname, lname, phone, email) values ('Sibbie', 'Stanhope', '860-664-4068', 'sstanhope2@wsj.com');
+insert into teachers (fname, lname, phone, email) values ('Carla', 'Brindley', '184-341-1005', 'cbrindley3@typepad.com');
+insert into teachers (fname, lname, phone, email) values ('Erny', 'Barchrameev', '601-617-1683', 'ebarchrameev4@about.com');
+
+INSERT INTO courses(title, course_number, teacher_id)
+VALUES 
+	('English', 102, 1),
+	('Science', 103, 2),
+	('Math', 104, 3),
+	('History', 105, 4),
+	('Physical ED', 106, 5)
+
+	INSERT INTO topics(some_topic)
+	VALUES 
+	('English for Introverts'),	
+	('Intro Web Dev'),
+	('Quantum Everything'),
+	('History of Bash'),
+	('Armchair sports')
+	
+
+INSERT INTO courses_students(course_id, student_id)
+VALUES 
+	(1, 1),
+	(2, 1),
+	(5, 3),
+	(3, 10),
+	(4, 7),
+	(4, 4),
+	(5, 4),
+	(3, 2)
+
+
+INSERT INTO topics(some_topic)
+VALUES 
+	('English in Binary'),
+	('How to read paper books'),
+	('Expert algos'),
+	('Calculus for dummies'),
+	('Flat earth theory'),
+	('Ancient Aliens')
+	
+INSERT INTO courses_topics(course_id, topic_id)
+VALUES 
+	(1, 1),
+	(2, 2),
+	(3, 3),
+	(4, 4),
+	(5, 5)
+	
