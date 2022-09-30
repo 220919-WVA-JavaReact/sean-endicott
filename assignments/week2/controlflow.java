@@ -113,7 +113,9 @@ public class ControlFlow{
             for (int j=i+1; j<intArr.length;j++) {
                 int temp=0;
                 if (intArr[i] > intArr[j]) {
-                    temp= intArr[j];
+                    temp= intArr[i];
+                    intArr[i] = intArr[j];
+                    intArr[j] = temp; 
                 }
             }
         }
